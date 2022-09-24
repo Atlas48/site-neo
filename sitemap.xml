@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://atlas48.neocities.org//500.html</loc>
+<loc>https://atlas48.neocities.org/</loc>
 </url>
 <url>
-<loc>https://atlas48.neocities.org//dnd/crater-gulch/design.html</loc>
-</url>
-<url>
-<loc>https://atlas48.neocities.org//dnd/crater-gulch/food.html</loc>
-</url>
-<url>
-<loc>https://atlas48.neocities.org//dnd/crater-gulch/galchi.html</loc>
-</url>
-<url>
-<loc>https://atlas48.neocities.org//</loc>
-</url>
-<url>
-<loc>https://atlas48.neocities.org//dnd/crater-gulch/</loc>
-</url>
-<url>
-<loc>https://atlas48.neocities.org//not_found.html</loc>
+<loc>https://atlas48.neocities.org/not_found.html</loc>
 </url>
 </urlset>
