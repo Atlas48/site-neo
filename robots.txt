@@ -1,4 +1,4 @@
-Sitemap: https://atlas48.neocities.org//sitemap.xml
+Sitemap: https://atlas48.neocities.org/sitemap.xml
 
 User-Agent: *
 Disallow: /
