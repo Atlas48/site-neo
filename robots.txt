@@ -1,4 +1,5 @@
 Sitemap: https://atlas48.neocities.org/sitemap.xml
 
 User-Agent: *
-Disallow: /
+Allow: /
+Crawl-delay: 1
