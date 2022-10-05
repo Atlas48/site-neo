@@ -1,0 +1,40 @@
+#+TITLE: Villan Ideas
+#+STARTUP: entitiespretty
+* Xaviard
+/medium construct/humanoid, neutral evil/
+| STR | DEX | CON | INT | WIS | CHA |
+|-----+-----+-----+-----+-----+-----|
+|  10 |  16 |  13 |  20 |  14 |  16 |
+|   0 |   3 |   1 |   5 |   2 |   3 |
+#+TBLFM: @3=floor((@2-10)/2)
+- Saving Throws :: INT+12, WIS+9
+- Damage Resisistances :: Cold, Lightning, Necrotic, Bludgeoning, Piecing, Slashing
+- Damage Immunities :: Force, Poison, Radiant, Necrotic
+- Condition Immunities :: Charmed, Frightened, Paralyzed, Poisoned
+- Senses :: Blindsight 120ft; Passive Perception 19
+- Languages :: Common, Elvish, Dwarvish, Draconic, Gnomish
+** Actions
+** Legendary Actions
+** Spellcasting
+Xaviard is an 18th-level spellcaster. His spellcasting ability is Intelligence (spell save DC 20, +12 to hit with spell attacks).
+Xaviard has the following wizard spells prepared:
+*** Cantrips
+-
+*** 1^st
+-
+*** 2^nd
+-
+*** 3^rd
+-
+*** 4^th
+-
+*** 5^th
+-
+*** 6^th
+-
+*** 7^th
+-
+*** 8^th
+-
+*** 9^th
+-
