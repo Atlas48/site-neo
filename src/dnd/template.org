@@ -1,0 +1,43 @@
+/medium humanoid,/
+- Armor Class :: 
+- Hit Points :: 162 (d+)
+- Speed ::
+| STR | DEX | CON | INT | WIS | CHA |
+|-----+-----+-----+-----+-----+-----|
+|     |     |     |     |     |     |
+|  -5 |  -5 |  -5 |  -5 |  -5 |  -5 |
+#+TBLFM: @3=floor((@2-10)/2)
+- Saving Throws :: 
+- Damage Resisistances :: 
+- Damage Immunities :: 
+- Condition Immunities :: 
+- Senses :: 
+- Languages :: 
+** Traits
+- Legendary Resistance (3/Day). :: If Xaviard fails a saving throw, he can choose to succeed instead.
+** Actions
+** Legendary Actions
+** Lair Actions
+** Spellcasting
+ is an -level spellcaster. It's spellcasting ability is  (spell save DC ,  to hit with spell attacks).
+ has the following wizard spells prepared:
+*** Cantrips
+- 
+*** 1^st
+-
+*** 2^nd
+- 
+*** 3^rd
+-
+*** 4^th
+-
+*** 5^th
+-
+*** 6^th
+-
+*** 7^th
+-
+*** 8^th
+-
+*** 9^th
+-

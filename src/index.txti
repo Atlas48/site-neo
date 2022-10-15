@@ -6,4 +6,6 @@ Everything's slowly being set up and the like, so you'll only be able to access 
 
 I _may_ make a sitemap, I may not. Just getting the infastructure set up.
 
-!/img/ucbanner.gif(The Second Banner)!
+h1. TODO
+* find a way to render the org-mode files
+* maybe make an automated sitemap renderer?
