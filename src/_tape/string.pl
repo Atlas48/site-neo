@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 use strict; use warnings;
-use "dat.pl";
+use "dat.pm";
 use Text::Textile;
 use Text::Markdown;
 use Org::To::HTML

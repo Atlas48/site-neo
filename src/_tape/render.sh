@@ -1,7 +1,14 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
+# v2.0
 cd ..
-declare -A title=([not_found]="404 - Page Not Found" [index]="Atlas48's Archives")
-for i in *.txti; do
-  flatiron < $i | m4 -DTITLE=${title[${i##.html}]} main.html.m4 | sed '/^$/d' > ../${i/txti/html}
+files=(`find -not -path '_*'`)
+for i in ${files[@]}; do
+  if test -d $i; then
+	mkdir -p ../$i
+  elif test -f $i; then
+	_tape/render.pl $i
+  else
+	echo "Skipping $i, unknown file type"
+  fi
 done
