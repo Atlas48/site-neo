@@ -1,20 +1,24 @@
 #!/usr/bin/env perl
 use strict; use warnings;
-use "dat.pm";
-use Text::Textile;
-use Text::Markdown;
-use Org::To::HTML
-if($ARGV[1][0]=='_') {
-  print STDERR "Skipping file: $ARGV[1], ignored.";
+use File::Slurp; use File::Basename;
+push(@INC,dirname(__FILE__));
+use tape;
+my $fi = $ARGV[1];
+if(substr($fi,0,1)=='_') {
+  print STDERR "Skipping file: $fi, ignored.";
   exit 0;
 }
-my @fi = split(/\./, $ARGV[1])
-if(!exists($fn{$fi[1]}) {
-	print STDERR "Skipping file: $ARGV[1], no way to process extension.";
+my @fc = split(/\./, $fi);
+my $fo = $fc[0].'.html';
+if(!exists($fc{$fc[1]}) {
+	print STDERR "Skipping file: $fi, no way to process extension.";
 	exit 1;
 }
-open $if, "<$ARGV[1]";
+my $out=tape::render{$fc[1]}(read_file($fi);
 open $of, ">_tmp";
-$fn{$fi[1]}($if);
-close $if;
+if(exists($tape::titles{$fi})) {
+  print $of `m4 -DTITLE=$tape::titles{$fi} main.html.m4<<.
+$out
+.`;
+}
 close $of;
