@@ -1,4 +1,4 @@
-dnl template.m4.html v1.0
+dnl template.m4.html v1.2
 dnl Part of the tape-and-string suite used to construct the website
 include(LIB)dnl
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ include(LIB)dnl
 <style>
 @include "style.css";
 </style>
-<title>ifdef(`TITLE',TITLE,`Untitled Atlas48 Archive Page')</title>
+<title>TITLE</title>
 </head>
 <body>
 include(`/dev/stdin')dnl Probably not a good idea, but whatever.
