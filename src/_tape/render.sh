@@ -11,7 +11,7 @@ function tape {
 	*.org) org-ruby --translate html $1 ;;
 	*.md) comrak --gfm $1 ;;
 	*.html) cat $1 ;;
-	*) pandoc --cols 168 -t html $i || echo "Unable to render $i, unknown format" ;;
+	*) pandoc --cols 168 -t html $i || echo "Skipping $i, unknown format" ;;
   esac
 }
 cd ..
@@ -24,7 +24,7 @@ for i in ${files[@]}; do
 	else continue
 	fi
   elif test -f $i; then
-	tape $i | m4 -DTITLE=`${prog[title]}` -DLIB=${prog[lib]} ${prog[m4]} > ../$i
+	tape $i | sed 's/^\s\{1,4\}//' | m4 -DTITLE="$(${prog[title]} $i)" -DLIB=${prog[lib]} ${prog[m4]} > ../${i%.*}.html
   else
 	echo "Skipping $i, unknown file type"
   fi
