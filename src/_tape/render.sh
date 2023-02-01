@@ -7,7 +7,7 @@ for i in ${files[@]}; do
   if test -d $i; then
 	mkdir -p ../$i
   elif test -f $i; then
-	_tape/render.pl $i
+	tape $i | m4 -DTITLE=`${prog[title]} $i` .
   else
 	echo "Skipping $i, unknown file type"
   fi
