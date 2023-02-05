@@ -14,6 +14,19 @@ function tape {
 	*) pandoc --cols 168 -t html $i || echo "Skipping $i, unknown format" ;;
   esac
 }
+function yn {
+  while true; do
+	read -p "$* [y/n]:" yn
+	case $yn in
+	  [Yy]*) return 0;;
+	  [Nn]*)
+		echo "Aborted."
+		return 1;;
+	  *) echo "Please answer Yes or No.";;
+	esac
+  done
+}
+
 cd ..
 files=(`find -not -path './_*'`)
 for i in ${files[@]}; do
@@ -24,8 +37,16 @@ for i in ${files[@]}; do
 	else continue
 	fi
   elif test -f $i; then
+	if ! grep -q '.s[ac]ss' "$i"; then
+	  sass=+($i)
+	  continue
+	fi
 	tape $i | sed 's/^\s\{1,4\}//' | m4 -DTITLE="$(${prog[title]} $i)" -DLIB=${prog[lib]} ${prog[m4]} > ../${i%.*}.html
   else
 	echo "Skipping $i, unknown file type"
   fi
 done
+
+if ! ( test -z ${css[@]} ) && yn "Run rcss.sh?"; then
+  _tape/rcss.sh ${css[@]}
+fi
