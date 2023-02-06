@@ -11,7 +11,7 @@ function tape {
 	*.org) org-ruby --translate html $1 ;;
 	*.md) comrak --gfm $1 ;;
 	*.html) cat $1 ;;
-	*) pandoc --cols 168 -t html $i || echo "Skipping $i, unknown format" ;;
+	*) pandoc --columns 168 -t html $i || echo "Skipping $i, unknown format" ;;
   esac
 }
 function yn {
@@ -28,7 +28,7 @@ function yn {
 }
 
 cd ..
-files=(`find -not -path './_*'`)
+files=(`find -not -path './_*' -not -path './css'`)
 for i in ${files[@]}; do
   echo $i
   if test -d $i; then
@@ -37,16 +37,8 @@ for i in ${files[@]}; do
 	else continue
 	fi
   elif test -f $i; then
-	if ! grep -q '.s[ac]ss' "$i"; then
-	  sass=+($i)
-	  continue
-	fi
 	tape $i | sed 's/^\s\{1,4\}//' | m4 -DTITLE="$(${prog[title]} $i)" -DLIB=${prog[lib]} ${prog[m4]} > ../${i%.*}.html
   else
 	echo "Skipping $i, unknown file type"
   fi
 done
-
-if ! ( test -z ${css[@]} ) && yn "Run rcss.sh?"; then
-  _tape/rcss.sh ${css[@]}
-fi
