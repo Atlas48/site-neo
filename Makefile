@@ -13,7 +13,7 @@ list-dir:
 	@echo "=====DIRECTORIES======"
 	find . -wholename './.hg' -prune , -type d -not -name .hg
 clean:
-	rm -r out
+	rm -rf out
 build:
 	./render.sh
 push: build
