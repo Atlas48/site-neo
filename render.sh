@@ -5,6 +5,9 @@ declare -A prog
 prog[m4]=`readlink -f main.html.m4`
 prog[lib]=`readlink -f lib.m4`
 prog[title]=`readlink -f titlelookup`
+function inf { echo -e "\x1B[1;32mINF\x1B[0m: $@"; }
+function wrn { echo -e "\x1B[1;93mWRN\x1B[0m: $@"; }
+function err { echo -e "\x1B[1;31mERR\x1B[0m: $@"; }
 function tape {
   case $1 in
 	*.txti) redcloth $1 ;;
@@ -26,19 +29,43 @@ function yn {
 	esac
   done
 }
+doc=(`find . -wholename './.hg' -prune , -type f -name '*.txti' , -name '*.org' , -name '*.md'`)
+sass=(`find . -wholename './.hg' -prune , -type f -name '*.sass'`)
+scss=(`find . -wholename './.hg' -prune , -type f -name '*.scss'`)
+rest=(`find . -wholename './.hg' -prune , -type f ! \( -name '*.org' , -name '*.txti' , -name '*.md' , -name .hg \)`)
+dir=(`find . -wholename './.hg' -prune , -type d -not -name .hg`)
 
-cd ..
-files=(`find -not -path './_*' -not -path './css'`)
-for i in ${files[@]}; do
+inf "Creating directory structure..."
+for i in ${dir[@]}; do
   echo $i
-  if test -d $i; then
-	if test -d ../$i; then
-	  mkdir -vp ../$i
-	else continue
-	fi
-  elif test -f $i; then
-	tape $i | sed 's/^\s\{1,4\}//' | m4 -DTITLE="$(${prog[title]} $i)" -DLIB=${prog[lib]} ${prog[m4]} > ../${i%.*}.html
-  else
-	echo "Skipping $i, unknown file type"
-  fi
+  mkdir -p out/$i
+done
+inf "Rendering document files..."
+for i in ${dir[@]}; do
+  echo $i
+  tape $i | m4 -DTITLE=${title[$i]} main.html.m4
+done
+inf "Rendering sass files..."
+if test -z "${sass[@]}"; then
+  inf "No .sass files detected, skipping"
+  unset sass
+else
+  for i in ${sass[@]}; do
+	echo $i
+	sassc -a $i out/$i
+  done
+fi
+if test -z "${scss[@]}"; then
+  inf "No .scss files detected, skipping."
+  unset scss
+else
+  for i in ${scss[@]}; do
+	echo $i
+	sassc $i out/$i
+  done
+fi
+inf "Copying other files..."
+# Probably a more efficient way to do this.
+for i in ${rest[@]}; do
+  cp -v $i out/$i
 done
