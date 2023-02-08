@@ -1,7 +1,12 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
 # v3.0
-. titles.sh
+enable -f /usr/lib/bash/csv csv
+declare -A title
+while read -r ii; do
+  csv -a i "$ii"
+  title[in/${i[0]}]=${i[1]}
+done <title.csv
 function inf { echo -e "\x1B[1;32mINF\x1B[0m: $*"; }
 function wrn { echo -e "\x1B[1;93mWRN\x1B[0m: $*"; }
 function err { echo -e "\x1B[1;31mERR\x1B[0m: $*"; }
@@ -30,21 +35,27 @@ function yn {
 	esac
   done
 }
-doc=(`find . -wholename './.hg' -prune , -type f -name '*.txti' -o -name '*.org' -o -name '*.md'`)
-sass=(`find . -wholename './.hg' -prune , -type f -name '*.sass'`)
-scss=(`find . -wholename './.hg' -prune , -type f -name '*.scss'`)
-rest=(`find . -wholename './.hg' -prune , -type f ! \( -name '*.org' -o -name '*.txti' -o -name '*.md' -o -name .hg \)`)
-dir=(`find . -wholename './.hg' -prune , -type d -not -name .hg`)
+doc=(`find in -type f -name '*.txti' -o -name '*.org' -o -name '*.md'`)
+sass=(`find in -type f -name '*.sass'`)
+scss=(`find in -type f -name '*.scss'`)
+rest=(`find in -type f ! \( -name '*.org' -o -name '*.txti' -o -name '*.md' -o -name .hg \)`)
+dir=(`find in -type d`)
 
 inf "Creating directory structure..."
+echo ${dir[@]}
 for i in ${dir[@]}; do
-  echo $i
-  mkdir -p out/$i
+  o="${i/in/out}"
+  mkdir -pv $o
 done
 inf "Rendering document files..."
 for i in ${doc[@]}; do
-  echo $i
-  tape $i | m4 -DTITLE="${title[$i]}" main.html.m4 > out/${i%.*}.html
+  o="${i/in/out}"
+  echo "$i => $o"
+  if test -z "${title[$i]}"; then
+	tape $i | m4 main.html.m4 > ${o%.*}.html
+  else
+	tape $i | m4 -DTITLE="${title[$i]}" main.html.m4 > ${o%.*}.html
+  fi
 done
 inf "Rendering sass files..."
 if test -z "${sass[@]}"; then
@@ -52,8 +63,9 @@ if test -z "${sass[@]}"; then
   unset sass
 else
   for i in ${sass[@]}; do
-	echo $i
-	sassc -a $i out/$i
+	o="${i/in/out}"
+	echo "$i => $o"
+	sassc -a $i $o
   done
 fi
 if test -z "${scss[@]}"; then
@@ -61,12 +73,10 @@ if test -z "${scss[@]}"; then
   unset scss
 else
   for i in ${scss[@]}; do
-	echo $i
-	sassc $i out/$i
+	o="${i/in/out}"
+	echo "$i => $o"
+	sassc $i $o
   done
 fi
 inf "Copying other files..."
-# Probably a more efficient way to do this.
-for i in ${rest[@]}; do
-  cp -v $i out/$i
-done
+cp -rv 'in'/* out/
