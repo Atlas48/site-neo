@@ -52,9 +52,9 @@ for i in ${doc[@]}; do
   o="${i/in/out}"
   echo "$i => $o"
   if test -z "${title[$i]}"; then
-	tape $i | m4 main.html.m4 > ${o%.*}.html
+	tape $i | m4 m4/main.html.m4 > ${o%.*}.html
   else
-	tape $i | m4 -DTITLE="${title[$i]}" main.html.m4 > ${o%.*}.html
+	tape $i | m4 -DTITLE="${title[$i]}" m4/main.html.m4 > ${o%.*}.html
   fi
 done
 inf "Rendering sass files..."

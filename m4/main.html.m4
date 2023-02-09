@@ -1,6 +1,6 @@
 dnl template.m4.html v1.2
 dnl Part of the tape-and-string suite used to construct the website
-include(`lib.m4')dnl
+include(`m4/lib.m4')dnl
 <!DOCTYPE html>
 <html>
 <head>
