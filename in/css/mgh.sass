@@ -1,0 +1,14 @@
+@mixin font-settings($weight:0,$width:0,$yopq:0,$slant:0)
+ font-variation-settings: 'wght' $weight,'wdth' $width, 'YOPQ' $yopq, 'slnt' $slant
+@font-face
+ font-family: 'Science Gothic', monospace
+ src: url('font/science-gothic.ttf') format('truetype')
+body
+ background-color: #00103D
+ color: #EAE8E3
+.content
+ h1
+  font-family: 'Science Gothic', monospace
+  @include font-settings(345,100,116,0)
+  ::before
+   content: '#'
