@@ -1,5 +1,5 @@
 # Atlas48's Neocites Archives
-Welcome to the technical documentation for my [Neocities](https://neocities.org] page, which also contains a rudimentary static site generator cobbled together out of unix tools
+Welcome to the technical documentation for my [Neocities](https://neocities.org) page, which also contains a rudimentary static site generator cobbled together out of unix tools
 and Ruby scripts
 
 # License
