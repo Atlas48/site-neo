@@ -1,3 +1,6 @@
+#!/bin/bash
+# gensimap.sh: Generate a sitemap for my website.
+# v2.0p1
 function r { echo $@ >> out/sitemap.xml; }
 test -d out/sitemap.xml && sed -i d sitemap.xml
 r '<?xml version="1.0" encoding="UTF-8"?>'
