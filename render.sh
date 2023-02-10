@@ -1,6 +1,6 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.0
+# v3.1
 enable -f /usr/lib/bash/csv csv
 declare -A title
 while read -r ii; do
@@ -41,12 +41,15 @@ scss=(`find in -type f -name '*.scss'`)
 rest=(`find in -type f ! \( -name '*.org' -o -name '*.txti' -o -name '*.md' -o -name .hg \)`)
 dir=(`find in -type d`)
 
+function dirs {
 inf "Creating directory structure..."
 echo ${dir[@]}
 for i in ${dir[@]}; do
   o="${i/in/out}"
   mkdir -pv $o
 done
+}
+function docs {
 inf "Rendering document files..."
 for i in ${doc[@]}; do
   o="${i/in/out}"
@@ -57,6 +60,8 @@ for i in ${doc[@]}; do
 	tape $i | m4 -DTITLE="${title[$i]}" m4/main.html.m4 > ${o%.*}.html
   fi
 done
+}
+function sass {
 inf "Rendering sass files..."
 if test -z "${sass[@]}"; then
   inf "No .sass files detected, skipping"
@@ -65,7 +70,7 @@ else
   for i in ${sass[@]}; do
 	o="${i/in/out}"
 	echo "$i => $o"
-	sassc -a $i $o
+	sassc -a $i ${o/sa/c}
   done
 fi
 if test -z "${scss[@]}"; then
@@ -75,8 +80,29 @@ else
   for i in ${scss[@]}; do
 	o="${i/in/out}"
 	echo "$i => $o"
-	sassc $i $o
+	sassc $i ${o#s}
   done
 fi
+}
+function other {
 inf "Copying other files..."
 cp -rv 'in'/* out/
+}
+function all {
+dirs
+docs
+sass
+other
+}
+if test -z "$*"; then
+  all
+  exit 0
+fi
+case $1 in
+  dir) dirs;;
+  doc) docs;;
+  s[ac]ss) sass;;
+  other) other;;
+  all) all;;
+  *) all;;
+esac
