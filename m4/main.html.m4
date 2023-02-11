@@ -2,7 +2,7 @@ dnl template.m4.html v1.3-p1
 dnl Part of the tape-and-string suite used to construct the website
 include(`m4/lib.m4')dnl
 ifdef(`CSS_INC',`', define(`CSS_INC', `main'))dnl
-ifelse(CSS_INC,`dnd',define(`CSS_INC',`dnd'))dnl
+ifelse(CSS_INC,`dnd',define(`CSS_INC',`main'))dnl
 define(`_CSS',`/css/CSS_INC.css')dnl
 <!DOCTYPE html>
 <html>
