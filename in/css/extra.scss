@@ -1,0 +1,19 @@
+@mixin font($font) {
+	//no support for case so gonna have to YandereDev this.
+	@if($font=="sans") {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	@else if($font=="serif") {
+		font-family: "Times New Roman", Times, serif;
+	}
+	@else if($font=="mono") {
+		font-family: "Courier New", Courier, monospace;
+	}
+	@else {
+		@warn "Unknown value passed to mixin font: #{$font}."
+	}
+}
+
+@mixin font-settings($weight: 0, $width: 0, $yopq: 0, $slant: 0) {
+	font-variation-settings: 'wght'$weight, 'wdth'$width, 'YOPQ'$yopq, 'slnt'$slant
+}

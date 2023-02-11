@@ -1,4 +1,5 @@
-body {
-	font-family: sans-serif;
+@import "extra.scss";
+.content {
+	@include font('sans');
 	margin-left: 2em;
 }
