@@ -7,7 +7,7 @@ insert_final_newline=true
 [{Makefile,*.s[ac]ss}]
 indent_style=tab
 indent_size=1
-[{ignore.txt,*.csv}]
+[{ignore.txt,*.csv,m4/*}]
 insert_final_newline=false
 [*.rb]
 indent_style=space

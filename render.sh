@@ -1,6 +1,6 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.3-p1
+# v3.3-p2
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
@@ -18,7 +18,7 @@ function wrn { echo -e "\x1B[1;93mWRN\x1B[0m: $*"; }
 function err { echo -e "\x1B[1;31mERR\x1B[0m: $*"; }
 function tape {
   if test -d "$1"; then
-	  err "tape: Passed directory, $1"
+		err "tape: Passed directory, $1"
 	  return 1
   fi
   case $1 in
@@ -26,7 +26,7 @@ function tape {
 	*.org) org-ruby --translate html "$1" ;;
 	*.md) comrak --gfm "$1" ;;
 	*.html) cat $1 ;;
-  *.s[ac]ss) err "Told to render $1, shouldn't happen"; return 1 ;;
+	*.s[ac]ss) err "Told to render $1, shouldn't happen"; return 1 ;;
 	*) pandoc --columns 168 -t html "$1" || echo "Skipping $i, unknown format" ;;
   esac
 }
@@ -56,9 +56,9 @@ function docs {
 	  o="${i/in/out}"
 	  echo "$i => $o"
 	  if test -z "${title[$i]}"; then
-	    tape $i | m4 -DCSS_INC=$(awk -f get_sd.awk "$i") m4/main.html.m4 > ${o%.*}.html
+	    tape $i | m4 -DCSSI=$(awk -f get_sd.awk <<< "$i") m4/main.html.m4 > ${o%.*}.html
 	  else
-	    tape $i | m4 -DCSS_INC=$(awk -f get_sd.awk "$i") -DTITLE="${title[$i]}" m4/main.html.m4 > ${o%.*}.html
+	    tape $i | m4 -DCSSI=$(awk -f get_sd.awk <<< "$i") -DTITLE="${title[$i]}" m4/main.html.m4 > ${o%.*}.html
 	  fi
   done
 }
