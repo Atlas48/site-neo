@@ -1,18 +1,11 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.3-p2
+# v3.3-p4
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
 #E: Load
 #B: Definition
-
-function in_arr {
-  for i in "${@:2}"; do
-    [[ "$i" = "$1" ]] && return 0
-  done
-  return 1
-}
 function inf { echo -e "\x1B[1;32mINF\x1B[0m: $*"; }
 function wrn { echo -e "\x1B[1;93mWRN\x1B[0m: $*"; }
 function err { echo -e "\x1B[1;31mERR\x1B[0m: $*"; }
@@ -67,31 +60,19 @@ function sass {
     err "Cannot render, directory 'out' does not exist, run ./render.sh dir"
     return 1
   fi
-  local i o sass scss
+  local i o sass
   sass=(`./pfiles.rb sass`)
-  scss=(`./pfiles.rb scss`)
   inf "Rendering sass files..."
   if [ ${#sass[@]} -eq 0 ]; then
 	  inf "No .sass files detected, skipping"
-	  unset sass
+	  return 0
   else
 	  for i in ${sass[@]}; do
 	    o="${i/in/out}"
-	    o="${o/.sa/.c}"
+	    o="${o/.s[ac]/.c}"
 	    echo "$i => $o"
-	    sassc -a $i $o
+	    sassc -t expanded -a $i $o
 	  done
-  fi
-  if [ ${#scss[@]} -eq 0 ]; then
-	  inf "No .scss files detected, skipping."
-	  unset scss
-  else
-	for i in ${scss[@]}; do
-	  o="${i/in/out}"
-	  o="${o/\.s/.}"
-	  echo "$i => $o"
-	  sassc $i $o
-	done
   fi
 }
 function other {

@@ -1,4 +1,6 @@
 #!/usr/bin/ruby
+# pfiles.rb
+# v1.0-p2
 require 'find'
 ignore=!File.file?('ignore.txt') ? [] : File.readlines('ignore.txt')
 if ignore != []
@@ -26,26 +28,10 @@ when "doc"
       print ' ' unless i==l.last
     end
   end
-when "scass"
-  for i in l do
-    next if ignore.include?(i)
-     if /\.s[ac]ss$/.match?(i)
-      print i
-      print ' ' unless i==l.last
-     end
-  end
 when "sass"
   for i in l do
     next if ignore.include?(i)
-     if /\.sass$/.match?(i)
-      print i
-      print ' ' unless i==l.last
-     end
-  end
-when "scss"
-  for i in l do
-    next if ignore.include?(i)
-     if /\.scss$/.match?(i)
+     if /\.s[ac]ss$/.match?(i)
       print i
       print ' ' unless i==l.last
      end
