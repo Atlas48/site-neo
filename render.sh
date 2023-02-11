@@ -71,7 +71,7 @@ function sass {
 			o="${i/in/out}"
 			o="${o/.s[ac]/.c}"
 			echo "$i => $o"
-			sassc -t expanded -a $i $o
+			sassc -t expanded -a $i | sed 'g/^$/d' > $o
 		done
 	fi
 }
