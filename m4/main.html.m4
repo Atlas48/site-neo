@@ -15,8 +15,7 @@ include(`m4/lib.m4')dnl
 <a href="/">Home</a>
 </div>
 <div class="content">
-temp
-dnl include(`/dev/stdin')dnl Probably not a good idea, but whatever.
+include(`/dev/stdin')dnl Probably not a good idea, but whatever.
 </div>
 </body>
 </html>
