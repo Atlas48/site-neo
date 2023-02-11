@@ -26,6 +26,7 @@ function tape {
 	*.org) org-ruby --translate html "$1" ;;
 	*.md) comrak --gfm "$1" ;;
 	*.html) cat $1 ;;
+  *.s[ac]ss) err "Told to render $1, shouldn't happen"; return 1 ;;
 	*) pandoc --columns 168 -t html "$1" || echo "Skipping $i, unknown format" ;;
   esac
 }
@@ -35,7 +36,7 @@ function dirs {
     return 0
   fi
   local i o dir
-  dir=(`find in -type d`)
+  dir=(`./pfiles.rb dir`)
   inf "Creating directory structure..."
   echo ${dir[@]}
   for i in ${dir[@]}; do
@@ -49,13 +50,9 @@ function docs {
     return 1
   fi
   local i o doc
-  doc=(`find in -type f -name '*.txti' -o -name '*.org' -o -name '*.md'`)
+  doc=(`./pfiles.rb doc`)
   inf "Rendering document files..."
   for i in ${doc[@]}; do
-    if in_arr $i ${ignore[@]}; then
-      inf "Skipping $i"
-      continue
-    fi
 	  o="${i/in/out}"
 	  echo "$i => $o"
 	  if test -z "${title[$i]}"; then
@@ -71,18 +68,14 @@ function sass {
     return 1
   fi
   local i o sass scss
-  sass=(`find in -type f -name '*.sass'`)
-  scss=(`find in -type f -name '*.scss'`)
+  sass=(`./pfiles.rb sass`)
+  scss=(`./pfiles.rb scss`)
   inf "Rendering sass files..."
   if [ ${#sass[@]} -eq 0 ]; then
 	  inf "No .sass files detected, skipping"
 	  unset sass
   else
 	  for i in ${sass[@]}; do
-      if in_arr $i ${ignore[@]}; then
-        inf "Skipping $i"
-        continue
-      fi
 	    o="${i/in/out}"
 	    o="${o/.sa/.c}"
 	    echo "$i => $o"
@@ -94,10 +87,6 @@ function sass {
 	  unset scss
   else
 	for i in ${scss[@]}; do
-    if in_arr $i ${ignore[@]}; then
-      inf "Skipping $i"
-      continue
-    fi
 	  o="${i/in/out}"
 	  o="${o/\.s/.}"
 	  echo "$i => $o"
