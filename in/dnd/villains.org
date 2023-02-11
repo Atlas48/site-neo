@@ -2,4 +2,4 @@
 #+OPTIONS: num:nil toc:1
 #+STARTUP: entitiespretty
 * Xaviard
-See: [[file:./xavard.org]]
+See: [[xaviard.html]]
