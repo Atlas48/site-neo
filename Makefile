@@ -16,7 +16,5 @@ clean:
 	rm -rf out
 build:
 	./render.sh
-sitemap: out/sitemap.xml
-	./gensimap.sh
 push: build
 	rclone sync -v out/ neo:/
