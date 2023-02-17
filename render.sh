@@ -1,6 +1,6 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.4-p2
+# v3.4-p3
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
@@ -33,7 +33,7 @@ function docs {
 	inf "Rendering document files..."
 	for i in ${doc[@]}; do
 		o="${i/in/out}"
-		echo "$i => $o"
+		echo "'$i' -> '$o'"
 		if test -z "${title[$i]}"; then
 			m4 -D_INFILE="$i" -DCSSI=$(awk -f awk/getsd.awk <<< "$i") m4/main.html.m4 > ${o%.*}.html
 		else
@@ -56,7 +56,7 @@ function sass {
 		for i in ${sass[@]}; do
 			o="${i/in/out}"
 			o="${o/.s[ac]/.c}"
-			echo "$i => $o"
+			echo "'$i' -> '$o'"
 			sassc -t expanded -a $i | sed '/^$/d' > $o
 		done
 	fi
