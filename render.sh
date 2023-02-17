@@ -1,6 +1,6 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.4-p1
+# v3.4-p2
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
@@ -35,9 +35,9 @@ function docs {
 		o="${i/in/out}"
 		echo "$i => $o"
 		if test -z "${title[$i]}"; then
-			m4 -D_INFILE="$i" -DCSSI=$(awk -f get_sd.awk <<< "$i") m4/main.html.m4 > ${o%.*}.html
+			m4 -D_INFILE="$i" -DCSSI=$(awk -f awk/getsd.awk <<< "$i") m4/main.html.m4 > ${o%.*}.html
 		else
-			m4 -D_INFILE="$i" -DCSSI=$(awk -f get_sd.awk <<< "$i") -DTITLE="${title[$i]}" m4/main.html.m4 > ${o%.*}.html
+			m4 -D_INFILE="$i" -DCSSI=$(awk -f awk/getsd.awk <<< "$i") -DTITLE="${title[$i]}" m4/main.html.m4 > ${o%.*}.html
 		fi
 	done
 }
@@ -57,7 +57,7 @@ function sass {
 			o="${i/in/out}"
 			o="${o/.s[ac]/.c}"
 			echo "$i => $o"
-			sassc -t expanded -a $i | sed 'g/^$/d' > $o
+			sassc -t expanded -a $i | sed '/^$/d' > $o
 		done
 	fi
 }
@@ -97,14 +97,14 @@ function info {
 while read -r ii; do
 	csv -a i "$ii"
 	title[in/${i[0]}]=${i[1]}
-done < title.csv
+done < dat/title.csv
 #E: Logic/LoadDefs/title
 unset ii
 #B: Logic/LoadDefs/ignore
 if test -f ignore.txt; then
 	while read -r i; do
 		ignore+=(in/$i)
-	done < ignore.txt
+	done < dat/ignore.txt
 fi
 #E: Logic/LoadDefs/ignore
 #E: Logic/LoadDefs

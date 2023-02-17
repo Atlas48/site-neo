@@ -14,7 +14,7 @@ include(`m4/lib.m4')dnl
 </head>
 <body>
 <div class="header">
-<a href="/">Home</a>
+esyscmd(`awk -f awk/getlinks.awk dat/links.csv')dnl
 </div>
 <div class="content">
 esyscmd(`./tape.sh' _INFILE)
