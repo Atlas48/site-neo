@@ -1,9 +1,11 @@
 dnl template.m4.html v2.0-p1
 dnl Part of the tape-and-string suite used to construct the website
 ifdef(`DEBUG',`traceon')dnl
-ifdef(`_INFILE',`dnl ',`errprint(`Macro _INFILE is not defined')
-m4exit(1)')dnl
-include(`m4/lib.m4')dnl
+# ifdef(`_INFILE',`dnl ',`errprint(`Macro _INFILE is not defined')
+# m4exit(1)')dnl
+include(`lib.m4')dnl
+include(`linkdata.m4')dnl
+define(`_la',`_a(`argn(`1',$1),argn(`2',$1)')
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +16,11 @@ include(`m4/lib.m4')dnl
 </head>
 <body>
 <div class="header">
+stack_foreach(`_LINK',`_la')
 <a href="/">Home</a>
 </div>
 <div class="content">
-esyscmd(`./tape.sh' _INFILE)
+# esyscmd(`./tape.sh' _INFILE)dnl
 </div>
 </body>
 </html>
