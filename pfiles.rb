@@ -1,8 +1,8 @@
 #!/usr/bin/ruby
 # pfiles.rb
-# v1.0-p2
+# v1.0-p3
 require 'find'
-ignore=!File.file?('ignore.txt') ? [] : File.readlines('ignore.txt')
+ignore=!File.file?('dat/ignore.txt') ? [] : File.readlines('dat/ignore.txt')
 if ignore != []
   ignore.map! do |i|
     "in/#{i}"
