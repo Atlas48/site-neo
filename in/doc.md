@@ -8,7 +8,7 @@ Any runnable computer code or Sass/CSS definitions are licensed under the [GNU G
 # Specification
 ## Dependencies
 You will need the following tools to render and upload the site
-- [neo-cli](https://neo-cli.neocities.org/)
+- [Neocities CLI](https://neocities.org/cli)
 - [RedCloth](http://redcloth.org/)
 - [org-ruby](http://github.com/bdewey/org-ruby)
 - [comrak](https://github.com/kivikakk/comrak)
