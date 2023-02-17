@@ -1,14 +1,14 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.3-p4
+# v3.4-p1
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
 #E: Load
 #B: Definition
-function inf { echo -e "\x1B[1;32mINF\x1B[0m: $*"; }
-function wrn { echo -e "\x1B[1;93mWRN\x1B[0m: $*"; }
-function err { echo -e "\x1B[1;31mERR\x1B[0m: $*"; }
+function inf { 1>&2 echo -e "\x1B[1;32mINF\x1B[0m: $*"; }
+function wrn { 1>&2 echo -e "\x1B[1;93mWRN\x1B[0m: $*"; }
+function err { 1>&2 echo -e "\x1B[1;31mERR\x1B[0m: $*"; }
 function tape {
 	if test -d "$1"; then
 		err "tape: Passed directory, $1"
@@ -20,6 +20,7 @@ function tape {
 	*.md) comrak --gfm "$1" ;;
 	*.html) cat $1 ;;
 	*.s[ac]ss) err "Told to render $1, shouldn't happen"; return 1 ;;
+	*.sh) (inf "Running shellscript $1, I hope you know what you're doing..."; source $1 );;
 	*) pandoc --columns 168 -t html "$1" || echo "Skipping $i, unknown format" ;;
 	esac
 }
@@ -127,15 +128,15 @@ if test -z "$*"; then
 	exit $?
 fi
 case $1 in
-dir) dirs;;
-doc) docs;;
-s[ac]ss) sass;;
-other) other;;
-rest) other;;
-info) info;;
-vall) info; all;;
-all) all;;
-*) all;;
+	dir) dirs;;
+	doc) docs;;
+	s[ac]ss) sass;;
+	other) other;;
+	rest) other;;
+	info) info;;
+	vall) info; all;;
+	all) all;;
+	*) all;;
 esac
 #E: Logic
 exit $?
