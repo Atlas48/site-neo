@@ -1,6 +1,6 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.4-p4
+# v3.4-p5
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
@@ -34,11 +34,12 @@ function docs {
 	inf "Rendering document files..."
 	for i in ${doc[@]}; do
 		o="${i/in/out}"
+		o="${o%.*}.html"
 		echo "'$i' -> '$o'"
 		if test -z "${title[$i]}"; then
-			m4 -D_INFILE="$i" -DCSSI=$(awk -f awk/getsd.awk <<< "$i") m4/main.html.m4 > ${o%.*}.html
+			m4 -D_INFILE="$i" -DCSSI=$(awk -f awk/getsd.awk <<< "$i") m4/main.html.m4 > $o
 		else
-			m4 -D_INFILE="$i" -DCSSI=$(awk -f awk/getsd.awk <<< "$i") -DTITLE="${title[$i]}" m4/main.html.m4 > ${o%.*}.html
+			m4 -D_INFILE="$i" -DCSSI=$(awk -f awk/getsd.awk <<< "$i") -DTITLE="${title[$i]}" m4/main.html.m4 > $o
 		fi
 	done
 }
