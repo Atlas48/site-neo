@@ -1,6 +1,6 @@
 @import "extra.scss"
 @import url("all.css")
-@import url("font/ibm-plex.css")
+@import url("font/ibm-plex-sans/def.css")
 $bg: #00103D
 $fg: #EAE8E3
 $link: #189E86
@@ -20,16 +20,16 @@ body
 		color: #B8B991
 .content
 	font-family: 'IBM Plex Sans', sans-serif
- h1
-  font-family: 'Science Gothic', monospace
-  @include font-settings(345,100,116,0)
-  ::before
-   content: '#'
+	h1
+	 font-family: 'Science Gothic', monospace
+	 @include font-settings(345,100,116,0)
+	 :before
+	  content: '#'
 	a
 		color: $link
-		::visited
-			color: #CDA75C
-			text-decoration: none
+	a:visited
+		color: #CDA75C
+		text-decoration: none
 blockquote
 	border-left: 6px solid $cont
 	color: scale-color($fg,$lightness:25%)

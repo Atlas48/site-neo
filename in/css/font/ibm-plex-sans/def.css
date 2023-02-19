@@ -1,0 +1,32 @@
+@font-face {
+	font-family: 'IBM Plex Sans';
+	src: url('regular.woff2') format('woff2'),
+		 url('regular.woff') format('woff'),
+		 url('regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IBM Plex Sans';
+	src: url('bold.woff2') format('woff2'),
+		 url('bold.woff') format('woff'),
+		 url('bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'IBM Plex Sans';
+	src: url('italic.woff2') format('woff2'),
+		 url('italic.woff') format('woff'),
+		 url('italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'IBM Plex Sans';
+	src: url('bolditalic.woff2') format('woff2'),
+		 url('bolditalic.woff') format('woff'),
+		 url('bolditalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
