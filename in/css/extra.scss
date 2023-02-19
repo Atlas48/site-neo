@@ -1,3 +1,4 @@
+//Mixin definitions and global variables.
 @mixin font($font) {
 	//no support for case so gonna have to YandereDev this.
 	@if($font=="sans") {

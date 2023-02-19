@@ -1,0 +1,35 @@
+@import "extra.scss"
+@import url("all.css")
+@import url("font/ibm-plex.css")
+$bg: #00103D
+$fg: #EAE8E3
+$link: #189E86
+$cont: #C7532B
+@font-face
+	font-family: 'Science Gothic', monospace
+	src: url('font/science-gothic.ttf') format('truetype')
+body
+	background-color: $bg
+	color: $fg
+.header
+	@include font("mono")
+	border: 2px solid $fg
+	background-color: scale-color($bg,$lightness:-25%)
+	a
+		text-decoration: underline
+		color: #B8B991
+.content
+	font-family: 'IBM Plex Sans', sans-serif
+ h1
+  font-family: 'Science Gothic', monospace
+  @include font-settings(345,100,116,0)
+  ::before
+   content: '#'
+	a
+		color: $link
+		::visited
+			color: #CDA75C
+			text-decoration: none
+blockquote
+	border-left: 6px solid $cont
+	color: scale-color($fg,$lightness:25%)
