@@ -18,5 +18,6 @@ build:
 	./render.sh
 	./gensimap.sh
 out: build
+	@echo -e "\e[38;5;217m*mwah!*~\e[0m"
 push: build
 	rclone sync -v out/ neo:/
