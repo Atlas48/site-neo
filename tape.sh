@@ -11,8 +11,8 @@ elif test -z "$*"; then
 fi
 case $1 in
 	_INFILE) err "Passed raw macro."; exit 1;;
-	*.txti) redcloth "$1" ;;
-	*.org) org-ruby --translate html "$1" ;;
+	*.txti) redcloth "$1" | sed '/^$/d;s/^\s\{1,\}//';;
+	*.org) org-ruby --translate html "$1" | sed '/^$/d;s/^\s\{1,\}//';;
 	*.md) comrak --gfm "$1" ;;
 	*.html) cat $1 ;;
 	*.s[ac]ss) err "Told to render $1, shouldn't happen"; exit 1 ;;

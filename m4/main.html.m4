@@ -19,7 +19,7 @@ include(`m4/lib.m4')dnl
 esyscmd(`awk -f awk/getlinks.awk dat/links.csv')dnl
 </div>
 <div class="content">
-esyscmd(`./tape.sh' _INFILE)
+esyscmd(`./tape.sh' _INFILE)dnl
 </div>
 </body>
 </html>
