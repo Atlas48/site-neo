@@ -2,7 +2,9 @@ dnl template.m4.html v2.0-p1
 dnl Part of the tape-and-string suite used to construct the website
 ifdef(`DEBUG',`traceon')dnl
 ifdef(`_INFILE',`dnl',`errprint(`Macro _INFILE is not defined')m4exit(1)')
-ifdef(`TITLE',`dnl',`define(`TITLE',`Atlas48 Archives')dnl)')
+changequote(`[',`]')dnl
+ifdef([TITLE],[dnl],[define([TITLE], [Atlas48's Archives])dnl)])
+changequote([`],['])dnl
 include(`m4/lib.m4')dnl
 <!DOCTYPE html>
 <html>
