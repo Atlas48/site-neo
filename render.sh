@@ -1,6 +1,6 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.4-p5
+# v3.4-p6
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
@@ -71,12 +71,17 @@ function other {
 	inf "Copying other files..."
 	cp -rv 'in'/* out/
 }
+function sitemap {
+	inf "Generating Sitemap..."
+	./gensimap.sh
+}
 function all {
 	load_title
 	dirs
 	docs
 	sass
 	other
+	sitemap
 }
 function info {
 	load_title
@@ -124,6 +129,7 @@ case $1 in
 	other) other;;
 	rest) other;;
 	info) info;;
+	sitemap) sitemap;;
 	vall) info; all;;
 	all) all;;
 	*) all;;
