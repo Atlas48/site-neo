@@ -72,7 +72,6 @@ function other {
 	cp -rv 'in'/* out/
 }
 function sitemap {
-	inf "Generating Sitemap..."
 	./gensimap.sh
 }
 function all {
@@ -81,7 +80,6 @@ function all {
 	docs
 	sass
 	other
-	sitemap
 }
 function info {
 	load_title

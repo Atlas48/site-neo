@@ -1,4 +1,4 @@
-.PHONY: all list-doc list-sass list-rest list-dir list clean build push
+.PHONY: all list-doc list-sass list-rest list-dir list clean push
 list: list-doc list-sass list-rest list-dir
 list-doc:
 	@echo "====DOCUMENT FILES===="
@@ -16,5 +16,7 @@ clean:
 	rm -rf out
 build:
 	./render.sh
+	./gensimap.sh
+out: build
 push: build
 	rclone sync -v out/ neo:/

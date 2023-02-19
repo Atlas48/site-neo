@@ -13,7 +13,7 @@ You will need the following tools to render and upload the site
 - [org-ruby](http://github.com/bdewey/org-ruby)
 - [comrak](https://github.com/kivikakk/comrak)
 ## `Makefile`
-Wraps `render.sh` as well as either `neo` or `rclone`.
+Wraps `render.sh` for the most part.
 ### Makefile Options
 #### `list`
 Lists all components in a heading-annotated list
@@ -21,7 +21,5 @@ Lists all components in a heading-annotated list
 Lists markup files, sass files, directories, and other files respectively.
 #### `clean`
 Removes the `out/` directory that is generated on running of `render.sh`.
-#### `push`
-Uploads the site to neocities.org.
 ## `render.sh`
 The primary worker script, sets up the directory structure, transpiles the markup, then the Sass, then copies the contents of `in/` to `out/`

@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    RedCloth (4.3.2)
+    org-ruby (0.9.12)
+      rubypants (~> 0.2)
+    rubypants (0.7.1)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  RedCloth (~> 4.3)
+  org-ruby (~> 0.9.12)
+
+BUNDLED WITH
+   2.4.1
