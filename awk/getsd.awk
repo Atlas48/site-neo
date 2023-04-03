@@ -4,4 +4,4 @@ function none() {print "main";exit}
 NF==1{none()}
 /\.\//{x++}
 $x~/\.(txti|html|org|md)/{none()}
-{if($x=="dnd")none();print $x;exit}
+{if($x=="dnd")none();else {print $x;exit}}
