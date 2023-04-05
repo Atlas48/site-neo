@@ -5,7 +5,7 @@ Welcome to the knowledgebase of the *Elysium's Edge* setting.
 ## Planets
 - Earth !/img/ucbug.gif!
 - Moon !/img/ucbug.gif!
-- [Mars](planet/mars.html)
+- Mars
 ## Megacorperations
 ### Big 3
 - Beyond
