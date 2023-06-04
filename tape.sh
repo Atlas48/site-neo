@@ -1,4 +1,6 @@
 #!/bin/bash
+# tape.sh
+# v1r4
 function inf { 1>&2 echo -e "\x1B[1;32mINF\x1B[0m: $*"; }
 function wrn { 1>&2 echo -e "\x1B[1;93mWRN\x1B[0m: $*"; }
 function err { 1>&2 echo -e "\x1B[1;31mERR\x1B[0m: $*"; }
@@ -15,8 +17,8 @@ case $1 in
 	*.org) org-ruby --translate html "$1" | sed '/^$/d;s/^\s\{1,\}//';;
 	*.md) comrak --gfm "$1" ;;
 	*.html) cat $1 ;;
-	*.s[ac]ss) err "Told to render $1, shouldn't happen"; exit 1 ;;
 	*.sh) (inf "Running shellscript $1, I hope you know what you're doing..."; source $1 );;
+	*.s[ac]ss) err "Told to render $1, shouldn't happen"; exit 1 ;;
 	*) pandoc --columns 168 -t html "$1" || echo "Skipping $i, unknown format" ;;
 esac
 
