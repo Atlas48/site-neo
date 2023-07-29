@@ -22,7 +22,7 @@ l=list.collect
 case ARGV.first
 when "doc"
   for i in l do
-    next if ignore.include?(i)
+    next if ignore.include?(i) or /\.v.html/.match?(i)
     if /\.(txti|org|md|html)$/.match?(i)
       print i
       print ' ' unless i==l.last
