@@ -1,0 +1,47 @@
+#+title: Elysium's Edge: Slang Dictionary
+#+author: Atlas Cove
+#+options: num:nil
+#+startup: content entitiespretty align
+/Wouldn't be a sci-fi cyberpunk setting without one.../
+* Earth
+- Abe :: n. (from Japanese, 『相棒』, Aibō, "pal", accomplice) Friend, partner, "bro".
+- Drokk :: n. Euphamism for "shit".
+- Fuyoh :: excl. (from Hokkien, 『水喔』, via Malay) expression of surprise and admiration.
+- Gahyo :: excl. (from Cantonese, 『加油』, add oil) Go for it, godspeed, come on.
+- Gummy :: n. (influenced by Japanese, 『ごみ』, trash) Low quality synthetic food.
+- Haiya :: excl. (from Hokkien, 『哎呀』, via Malay) expression of surprise and dissapointment.
+- Pulcot :: n./adj. (from Korean, 『불꽃』, sparkle), Kitchy over-the-top-ness.
+* Moon
+- Brat :: n. (from Russian, "брат", brother)  Friend, partner, bro, implies the listener is in the same group as the speaker.
+- Bone :: adj. (from Polari, "Bona", "good") Cool, awesome, dope.
+- Cake :: n. (from Japanese, 『計画』, "plan") plan, scheme, idea.
+- Gijer :: n. (from Japanese, 『外人』, influenced by romani "Gadzhe") Outsider, esp. of the moon.
+- Hein :: n. (from Robert A. Heinlein, author of /The Moon Is a Harsh Mistress/), A person who is hopeful to the point of being naive.
+- Jacks :: adj. (from Polari, "Ajax") Near.
+- Nico :: n. uncountable (from Italian, "Organico", personnel), Staff of a buisness
+- OB :: n. (from Japanese, 『親分』, *O*ya*b*un), boss
+- Juwet :: n. A lunar native.
+- Tikker :: excl. (from Hindi, ठीक हैं, "is right") Understood, perfect, OK.
+** Numbers
+The moon has it's own counting system
+1. Una
+2. Dwi
+3. Tri
+4. Kwat
+5. Chink
+6. Dit
+7. Seb
+8. Ot
+9. Novh
+10. Jech
+* Mars
+Mars has been settled by an equal number of Spanish and English speaking settlers, who have converged to create their own language, locally dubbee "Syano".
+
+Martian Spanish is notable for having a neuter case ("-e") for any animate noun.
+- Aus :: adv. (from German, aus, out) Outside.
+- Chergri :: n. (from Llanito, Echegarai), Guard, Watchman
+- Pane :: n. Good friend, pal.
+- Shtaubman :: n. German-speaking minority.
+- Syane :: (Corrupted from Spanish, Marciano), Martian native.
+* Other
+- Homebound :: n. Someone from Earth.
