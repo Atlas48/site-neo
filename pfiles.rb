@@ -4,9 +4,7 @@
 require 'find'
 ignore=!File.file?('dat/ignore.txt') ? [] : File.readlines('dat/ignore.txt')
 if ignore != []
-	ignore.map! do |i|
-		"in/#{i}"
-	end
+	ignore.map! { |i| "in/#{i}" }
 end
 class Enumerator
 	def collect
@@ -47,7 +45,7 @@ when "dir"
 when "rest"
 	for i in l do
 		next if ignore.include?(i)
-		unless /\.(s[ac]ss|txti|org|md)$/.match?(i) or File.directory(i)
+		unless /\.(s[ac]ss|txti|org|md|html)$/.match?(i) or File.directory?(i)
 			print i
 			print ' ' unless i==l.last
 		end
