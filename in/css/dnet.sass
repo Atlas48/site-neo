@@ -1,0 +1,14 @@
+@use 'sass:color'
+@import url("all.css")
+@import url("font/ibm-plex-mono/def.css")
+
+$bg: #1F0042,
+$fg: color.invert($bg)
+$link: #E0E030
+
+body
+	background-color: $bg
+	color: $fg
+	font-family: "IBM Plex Mono", Consolas
+a
+	color: $link
