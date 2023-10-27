@@ -1,6 +1,6 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.4-p6
+# v3.5-p0
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
@@ -64,12 +64,10 @@ function sass {
 	fi
 }
 function other {
-	if ! test -d out; then
-		err "Cannot render, directory 'out' does not exist, run ./render.sh dir"
-		return 1
-	fi
-	inf "Copying other files..."
-	cp -rv 'in'/* out/
+	local other=`./pfiles.rb rest`
+	for i in $other; do
+		ln -v $i ${i/in/out}
+	done
 }
 function sitemap {
 	./gensimap.sh
@@ -124,7 +122,7 @@ case $1 in
 	doc) docs;;
 	docs) docs;;
 	s[ac]ss) sass;;
-	other) other;;
+	other) dirs; other;;
 	rest) other;;
 	info) info;;
 	sitemap) sitemap;;
