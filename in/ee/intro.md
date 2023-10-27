@@ -27,6 +27,9 @@ Up until the revolution happened.
 
 > Amige, sori, te llamo p'atras, Boss is asking me about the Shtaubman in the LBM's office.
 
+Mars is the Americas, as the Americas were to Europe.
+A shining beacon of hope and industry with dreams of their own identity.
+
 ## Saturn
 
 > Good work, team. That's enough for today. Can't believe we've come so far.
