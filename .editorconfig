@@ -2,16 +2,14 @@ root=true
 [*]
 charset=utf-8
 end_of_line=lf
+indent_size=4
 trim_trailing_whitespace=true
 insert_final_newline=true
 [{Makefile,*.s[ac]ss}]
 indent_style=tab
-indent_size=4
 [{ignore.txt,*.csv,m4/*}]
 insert_final_newline=false
 [*.rb]
 indent_style=tab
-indent_size=4
 [*.sh]
 indent_style=tab
-indent_size=4
