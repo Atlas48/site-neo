@@ -1,4 +1,15 @@
 @import "extra.scss"
+a[href^="http"] //external links
+	color: var(--extlink,lightblue)
+	::after
+		content: ""
+		width: 11px
+		height: 11px
+		background-image: url(var(--extimg, "/img/extlink.svg"))
+		background-position: center
+		background-repeat: no-repeat
+		background-size: contain
+		display: inline-block
 body
 	@include font("sans")
 .header
