@@ -4,7 +4,10 @@ and Ruby scripts, that I've taken to calling the "tape-and-string" framework for
 
 # License
 All markup is licensed under the Creative Commons [Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
+
 Any runnable computer code or Sass/CSS definitions are licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
+
+All fonts belong to their respective owners.
 # Specification
 ## Dependencies
 You will need the following tools to render and upload the site
