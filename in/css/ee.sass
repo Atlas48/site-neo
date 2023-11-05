@@ -1,10 +1,14 @@
+@use "sass:color"
 @import "extra.scss"
 @import url("all.css")
-@import url("font/ibm-plex-sans/def.css")
+@import url("font/ibm-plex/sans/def.css")
 $bg: #00103D
 $fg: #EAE8E3
 $link: #189E86
 $cont: #C7532B
+
+:root
+	--extlink: lighten($link, 25%)
 @font-face
 	font-family: 'Science Gothic', monospace
 	src: url('font/science-gothic.ttf') format('truetype')
@@ -21,10 +25,10 @@ body
 .content
 	font-family: 'IBM Plex Sans', sans-serif
 	h1
-	 font-family: 'Science Gothic', monospace
-	 @include font-settings(345,100,116,0)
-	 :before
-	  content: '#'
+		font-family: 'Science Gothic', monospace
+		@include font-settings(345,100,116,0)
+		:before
+			content: '#'
 	a
 		color: $link
 	a:visited
