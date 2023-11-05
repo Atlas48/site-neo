@@ -45,3 +45,6 @@ Martian Spanish is notable for having a neuter case ("-e") for any animate noun.
 - Syane :: (Corrupted from Spanish, Marciano), Martian native.
 * Other
 - Homebound :: n. Someone from Earth.
+- Delve :: n. A generic term for Direct Neural Interface VR, derived from a genericised trademark.
+- Delve :: v. To use a delver
+- Delver :: n. A device that uses the Delve technology.

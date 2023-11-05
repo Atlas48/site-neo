@@ -34,3 +34,6 @@ A shining beacon of hope and industry with dreams of their own identity.
 
 > Good work, team. That's enough for today. Can't believe we've come so far.
 
+The most inhospitable colonised planet, Saturn's entire population consists mainly of miners and researchers,
+with a notable exception being a single sports stadium.
+
