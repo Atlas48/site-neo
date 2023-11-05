@@ -1,6 +1,6 @@
 #!/bin/bash
 # render.sh: part of the tape-and-string framework.
-# v3.5-p0
+#V:3.6-p1
 #B: Load
 enable -f /usr/lib/bash/csv csv
 declare -A title
@@ -43,29 +43,21 @@ function docs {
 		fi
 	done
 }
-function sass {
+function sassfn {
 	if ! test -d out; then
 		err "Cannot render, directory 'out' does not exist, run ./render.sh dir"
-		return 1
+		exit 1
 	fi
-	local i o sass
-	sass=(`./pfiles.rb sass`)
 	inf "Rendering sass files..."
-	if [ ${#sass[@]} -eq 0 ]; then
-		inf "No .sass files detected, skipping"
-		return 0
-	else
-		for i in ${sass[@]}; do
-			o="${i/in/out}"
-			o="${o/.s[ac]/.c}"
-			echo "'$i' -> '$o'"
-			sassc -t expanded -a $i | sed '/^$/d' > $o
-		done
-	fi
+	sass --no-source-map in/css:out/css
 }
 function other {
 	local other=`./pfiles.rb rest`
 	for i in $other; do
+		if test -f $i; then
+			inf "Skipping $i, file/hardlink exists..."
+			continue
+		fi
 		ln -v $i ${i/in/out}
 	done
 }
@@ -121,7 +113,7 @@ case $1 in
 	dir) dirs;;
 	doc) docs;;
 	docs) docs;;
-	s[ac]ss) sass;;
+	s[ac]ss) sassfn;;
 	other) dirs; other;;
 	rest) other;;
 	info) info;;
