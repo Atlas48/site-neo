@@ -113,11 +113,7 @@ case $1 in
 	dir) dirs;;
 	doc) docs;;
 	docs) docs;;
-<<<<<<< HEAD
 	s[ac]ss) sassfn;;
-=======
-	s[ac]ss) sass;;
->>>>>>> ee-dev
 	other) dirs; other;;
 	rest) other;;
 	info) info;;
