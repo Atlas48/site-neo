@@ -1,5 +1,0 @@
-Sitemap: https://atlas48.neocities.org/sitemap.xml
-
-User-Agent: *
-Allow: /
-Crawl-delay: 1

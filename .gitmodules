@@ -1,0 +1,3 @@
+[submodule "in"]
+	path = in
+	url = git@github.com:Atlas48/site-neo-content.git
