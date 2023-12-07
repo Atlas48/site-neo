@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 # pfiles.rb
-# v1.0-p3
+# v1.1-p0
 require 'find'
 ignore=!File.file?('dat/ignore.txt') ? [] : File.readlines('dat/ignore.txt')
 if ignore != []
@@ -20,8 +20,8 @@ l=list.collect
 case ARGV.first
 when "doc"
 	for i in l do
-		next if ignore.include?(i) or /\.v.html/.match?(i)
-		if /\.(txti|org|md|html)$/.match?(i)
+		next if ignore.include?(i) or /(?<!\.e)\.html/.match?(i)
+		if /\.(txti|org|md|e.html)$/.match?(i)
 			print i
 			print ' ' unless i==l.last
 		end
@@ -51,4 +51,5 @@ when "rest"
 		end
 	end
 else
+	abort "\x1B[1;31mERR\x1B[0m: Unknown option: #{ARGV.first}"
 end

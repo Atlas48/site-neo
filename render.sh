@@ -52,23 +52,21 @@ function sassfn {
 	sass --no-source-map in/css:out/css
 }
 function other {
-	local other=`./pfiles.rb rest`
+	local o other=`./pfiles.rb rest`
 	for i in $other; do
-		if test -f $i; then
+		o=${i/in/out}
+		if test -f $o; then
 			inf "Skipping $i, file/hardlink exists..."
 			continue
 		fi
-		ln -v $i ${i/in/out}
+		ln -v $i $o
 	done
-}
-function sitemap {
-	./gensimap.sh
 }
 function all {
 	load_title
 	dirs
 	docs
-	sass
+	sassfn
 	other
 }
 function info {
@@ -110,6 +108,7 @@ if test -z "$*"; then
 	exit $?
 fi
 case $1 in
+	clean) rm -rf out;;
 	dir) dirs;;
 	doc) docs;;
 	docs) docs;;
@@ -117,10 +116,13 @@ case $1 in
 	other) dirs; other;;
 	rest) other;;
 	info) info;;
-	sitemap) sitemap;;
+	sitemap) ./sitemap.sh;;
 	vall) info; all;;
 	all) all;;
-	*) all;;
+	*)
+		err "Invalid option, $1"
+		exit 1
+	;;
 esac
 #E: Logic
 exit $?
