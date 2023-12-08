@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 # pfiles.rb
-# v1.1-p0
+# v1.1-p1
+abort "\x1B[1;31mERR\x1B[0m: No arguments supplied" if ARGV.length == 0
 require 'find'
 ignore=!File.file?('dat/ignore.txt') ? [] : File.readlines('dat/ignore.txt')
 if ignore != []
@@ -15,12 +16,11 @@ class Enumerator
 		return out
 	end
 end
-list=Find.find('in')
-l=list.collect
+l=Find.find('in').collect
 case ARGV.first
 when "doc"
 	for i in l do
-		next if ignore.include?(i) or /(?<!\.e)\.html/.match?(i)
+		next if ignore.include?(i) or /(?<!\.e)\.html$/.match?(i)
 		if /\.(txti|org|md|e.html)$/.match?(i)
 			print i
 			print ' ' unless i==l.last
@@ -36,7 +36,7 @@ when "sass"
 	end
 when "dir"
 	for i in l do
-		next if ignore.include?(i)
+		next if ignore.include?(i) or i == ".git"
 		if File.directory?(i)
 			print i
 			print ' ' unless i==l.last

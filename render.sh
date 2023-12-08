@@ -34,7 +34,7 @@ function docs {
 	inf "Rendering document files..."
 	for i in ${doc[@]}; do
 		o="${i/in/out}"
-		o="${o%.*}.html"
+		o="${o%%.*}.html"
 		echo "'$i' -> '$o'"
 		if test -z "${title[$i]}"; then
 			m4 -D_INFILE="$i" -DCSSI=$(awk -f awk/getsd.awk <<< "$i") m4/main.html.m4 > $o
