@@ -15,7 +15,7 @@ function dirs {
 		return 0
 	fi
 	local i o dir
-	dir=(`./pfiles.rb dir`)
+	dir=(`./pfiles.sh dir`)
 	inf "Creating directory structure..."
 	echo ${dir[@]}
 	for i in ${dir[@]}; do
@@ -30,7 +30,7 @@ function docs {
 		return 1
 	fi
 	local i o doc
-	doc=(`./pfiles.rb doc`)
+	doc=(`./pfiles.sh doc`)
 	inf "Rendering document files..."
 	for i in ${doc[@]}; do
 		o="${i/in/out}"
@@ -52,7 +52,7 @@ function sassfn {
 	sass --no-source-map in/css:out/css
 }
 function other {
-	local o other=`./pfiles.rb rest`
+	local o other=`./pfiles.sh rest`
 	for i in $other; do
 		o=${i/in/out}
 		if test -f $o; then
