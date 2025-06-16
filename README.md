@@ -1,4 +1,4 @@
-# Atlas48's Neocites Archives
+# Atlas48's Neocities Archives
 Welcome to the technical documentation for my [Neocities](https://neocities.org) page, which also contains a rudimentary static site generator cobbled together out of unix tools,
 and Ruby scripts, that I've taken to calling the "tape-and-string" framework for obvious reasons.
 
