@@ -1,3 +1,12 @@
+# DEPRECATION NOTICE
+
+**THIS REPO IS NOW ARCHIVED. PLEASE VISIT [`site-neo2` ON `sr.ht`](https://git.sr.ht/~atlas48/site-neo2) FOR ANY FURTHER UPDATES.**
+
+I enjoyed the process of writing a custom SSG, and I'm still proud of it, but this codebase is a mess, and I'm worried I'm going to wind up with something
+like PHP on my hands, where a fun little toy templating engine becomes the programming language that is most of the web.
+
+I'm switching to [Lume](https://lume.land/) across all websites.
+
 # Atlas48's Neocities Archives
 Welcome to the technical documentation for my [Neocities](https://neocities.org) page, which also contains a rudimentary static site generator cobbled together out of unix tools,
 and Ruby scripts, that I've taken to calling the "tape-and-string" framework for obvious reasons.
